@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <title>Deshikreta</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <meta name="description" content="Your responsive ecommerce store">
+    <meta name="theme-color" content="#ffeb3b">
+</head>
+
+<body>
+
+<nav>
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img class="how-to-logo" src="images/DeshiKreta_2.png" alt="how-to-logo"></a>
+                <div class="searchbox">
+                    <input type="text" class="input" placeholder="Search products...">
+                    <button type="submit" class="search-button"><i class="fa fa-search"></i>Search</button>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#contact">Contact</a>
+                <a href="#home">Home</a>
+                <a href="Register.html">Login</a>
+                <a href="#wishlist">Wishlist</a>
+                <a href="#cart">Cart</a>
+            </div>
+        </div>
+    </nav>
+
+
+   <div class="main-container">
+        <!-- Sidebar Navigation - Connected to top nav -->
+        <nav class="the-sidebar">
+            <div class="sidebar-start">
+                <h3>Categories</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/popular.html">Popular</a></li>
+                    <li><a href="#shop-all">Shop All</a></li>
+                    <li><a href="Food">Food</a></li>
+                    <li><a href="#groceries">Groceries</a></li>
+                    <li><a href="#cosmetics">Cosmetics</a></li>
+                    <li><a href="#snacks">Snacks</a></li>
+                    <li><a href="care">Health & Care</a></li>
+                    <li><a href="#beauty-care">Beauty Care</a></li>
+                    <li><a href="#special-deals">Special Deals</a></li>
+                    <li><a href="Medical & Support">Medical & Support</a></li>
+                    <li><a href="#help-support">Help & Support</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+    <!--THe register form-->
+    <div class="Register">
+    <h2>Register</h2>
+<form id="registerForm">
+  <input type="text" id="name" placeholder="Name" required><br>
+  <input type="email" id="email" placeholder="Email" required><br>
+  <input type="password" id="password" placeholder="Password" required><br>
+  <button type="submit">Sign Up</button>
+</form>
+</div>
+<script>
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const res = await fetch("http://localhost:5000/api/users/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, password })
+  });
+
+  const data = await res.json();
+  alert(data.message || data.error);
+});
+</script>
+
+    
+</body>
+</html>
